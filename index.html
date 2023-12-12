@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jsh</title>
+</head>
+<body>
+    <style>
+        .image {
+            max-width: 30%;
+        }
+    </style>
+    <div class="floating-image" id="image-container">
+        <img class="image" src="josh.jpg">
+    </div><p>DO NOT DO ANYTHING</p>
+    <audio id="music" autoplay controls>
+        <source src="josh.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        var intervalId;
+
+        function cloneImage() {
+            var originalImage = document.querySelector('.image');
+            var clonedImage = originalImage.cloneNode(true);
+
+            // Generate a unique ID for the new image
+            var timestamp = new Date().getTime();
+            var newImageId = 'image_' + timestamp;
+
+            // Set the new ID for the cloned image
+            clonedImage.id = newImageId;
+
+            // Append the cloned image to the container
+            var imageContainer = document.getElementById('image-container');
+            imageContainer.appendChild(clonedImage);
+        }
+
+        // Start cloning the image at a regular interval
+        function startCloning() {
+            intervalId = setInterval(cloneImage, 1000); // Adjust the interval as needed (in milliseconds)
+        }
+
+        // Stop cloning when the music ends
+        document.getElementById('music').addEventListener('ended', function () {
+            clearInterval(intervalId);
+        });
+
+        // Start cloning when the music starts playing
+        document.getElementById('music').addEventListener('play', function () {
+            startCloning();
+        });
+    </script>
+</body>
+</html>

@@ -1,55 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jsh</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login & Registration Form</title>
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <style>
-        .image {
-            max-width: 30%;
-        }
-    </style>
-    <div class="floating-image" id="image-container">
-        <img class="image" src="josh.jpg">
-    </div><p>DO NOT DO ANYTHING</p>
-    <audio id="music" autoplay controls>
-        <source src="josh.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-        var intervalId;
-
-        function cloneImage() {
-            var originalImage = document.querySelector('.image');
-            var clonedImage = originalImage.cloneNode(true);
-
-            // Generate a unique ID for the new image
-            var timestamp = new Date().getTime();
-            var newImageId = 'image_' + timestamp;
-
-            // Set the new ID for the cloned image
-            clonedImage.id = newImageId;
-
-            // Append the cloned image to the container
-            var imageContainer = document.getElementById('image-container');
-            imageContainer.appendChild(clonedImage);
-        }
-
-        // Start cloning the image at a regular interval
-        function startCloning() {
-            intervalId = setInterval(cloneImage, 1000); // Adjust the interval as needed (in milliseconds)
-        }
-
-        // Stop cloning when the music ends
-        document.getElementById('music').addEventListener('ended', function () {
-            clearInterval(intervalId);
-        });
-
-        // Start cloning when the music starts playing
-        document.getElementById('music').addEventListener('play', function () {
-            startCloning();
-        });
-    </script>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form action="#">
+        <input type="text" placeholder="Enter your email">
+        <input type="password" placeholder="Enter your password">
+        <a href="#">Forgot password?</a>
+        <input type="button" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="#">
+        <input type="text" placeholder="Enter your email">
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+        <label for="resume">Upload Valid ID:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx .jpg .png">
+        <input type="password" placeholder="Create a password">
+        <input type="password" placeholder="Confirm your password">
+        <input type="button" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
